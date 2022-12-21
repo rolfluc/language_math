@@ -30,7 +30,6 @@ let thousandspos: number = 29;
 function getOperand() {
     const operands: string[] = ["•","+","-","/"];
     var index = Math.floor(Math.random() * operands.length);
-    console.log("index:" + index)
     return operands[index];
 }
 
@@ -102,13 +101,25 @@ function HandleThousands(input: number) {
 
 
 function HandleNumber(input: number) {
-    if(input < 100) {
-        return HandleTens(input);
-    } else if (input < 1000) {
-        return HandleHundreds(input)
-    } else {
-        return HandleThousands(input)
+    let isNegative: boolean = false;
+    let retVal: Data = {str: "", num: input}
+    if (input < 0) {
+        isNegative = true;
+        input = Math.abs(input)
     }
+        
+    if(input < 100) {
+        retVal = HandleTens(input);
+    } else if (input < 1000) {
+        retVal = HandleHundreds(input)
+    } else {
+        retVal = HandleThousands(input)
+    }
+    if (isNegative) {
+        console.log(input)
+        retVal.str = negative + " " + retVal.str;
+    }
+    return retVal
 }
 
 function performMath(num1:number,num2:number,operand:string) {
@@ -143,7 +154,6 @@ function genNumber() {
 }
 
 function getOperandString(operand: String) {
-    console.log("op:" + operand)
     let rnd:number = Math.random() > 0.49 ? 1 : 0;
     if (operand == "•") {
         return multiply[rnd];
@@ -159,7 +169,6 @@ function getOperandString(operand: String) {
 
 function setText(num1:number,num2:number,operand:string) {
     let genbox = document.getElementById("generatedstring") as HTMLElement | null;
-    console.log(HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?");
     if( genbox != null) {
         genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
     }
@@ -187,4 +196,8 @@ export function generateMath(e:Event) {
     secondOp = genNumber();
     res = performMath(firstOp,secondOp,operand);
     setText(firstOp,secondOp,operand);
+    let enterbox = document.getElementById("guess") as HTMLInputElement | null;
+    if (enterbox != null) {
+        enterbox.value = "";
+    }
 }

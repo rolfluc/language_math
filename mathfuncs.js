@@ -24,7 +24,6 @@ var thousandspos = 29;
 function getOperand() {
     var operands = ["•", "+", "-", "/"];
     var index = Math.floor(Math.random() * operands.length);
-    console.log("index:" + index);
     return operands[index];
 }
 function HandleTens(input) {
@@ -90,15 +89,26 @@ function HandleThousands(input) {
     return retVal;
 }
 function HandleNumber(input) {
+    var isNegative = false;
+    var retVal = { str: "", num: input };
+    if (input < 0) {
+        isNegative = true;
+        input = Math.abs(input);
+    }
     if (input < 100) {
-        return HandleTens(input);
+        retVal = HandleTens(input);
     }
     else if (input < 1000) {
-        return HandleHundreds(input);
+        retVal = HandleHundreds(input);
     }
     else {
-        return HandleThousands(input);
+        retVal = HandleThousands(input);
     }
+    if (isNegative) {
+        console.log(input);
+        retVal.str = negative + " " + retVal.str;
+    }
+    return retVal;
 }
 function performMath(num1, num2, operand) {
     var numericResult = 0;
@@ -134,7 +144,6 @@ function genNumber() {
     return Math.floor(Math.random() * multiplier);
 }
 function getOperandString(operand) {
-    console.log("op:" + operand);
     var rnd = Math.random() > 0.49 ? 1 : 0;
     if (operand == "•") {
         return multiply[rnd];
@@ -152,7 +161,6 @@ function getOperandString(operand) {
 }
 function setText(num1, num2, operand) {
     var genbox = document.getElementById("generatedstring");
-    console.log(HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?");
     if (genbox != null) {
         genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
     }
@@ -180,5 +188,9 @@ function generateMath(e) {
     secondOp = genNumber();
     res = performMath(firstOp, secondOp, operand);
     setText(firstOp, secondOp, operand);
+    var enterbox = document.getElementById("guess");
+    if (enterbox != null) {
+        enterbox.value = "";
+    }
 }
 exports.generateMath = generateMath;
