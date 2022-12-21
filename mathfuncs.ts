@@ -4,28 +4,24 @@ interface Data {
 }
 
 
-let multiply1: string = "mal";
-let multiply2: string = "multipliziert"
-let multiply: string[] = [multiply1,multiply2]
-let subtract1: string = "weniger"
-let subtract2: string = "minus"
-let subtract: string[] = [subtract1,subtract2]
-let add1: string = "und"
-let add2: string = "plus"
-let add: string[] = [add1,add2]
-let divide: string = "geteilt durch";
-
-var operand = getOperand();
-var firstOp = genNumber();
-var secondOp = genNumber();
-let res: Data = {str: "",num:0};
-
-let negative: string = "negativ";
-let and: string = "und";
-let fail: Data = {num:0, str:"null"};
-let numbers: Data[] = [{num:0, str:"null"},{num:1, str:"ein"},{num:2, str:"zwei"},{num:3, str:"drei"},{num:4, str:"vier"},{num:5, str:"fünf"},{num:6, str:"sechs"},{num:7, str:"sieben"},{num:8, str:"acht"},{num:9, str:"nuen"},{num:10, str:"zehn"},{num:11, str:"elf"},{num:12, str:"zwölf"},{num:13, str:"dreizehn"},{num:14, str:"vierzehn"},{num:15, str:"fünfzehn"},{num:16, str:"sechzehn"},{num:17, str:"siebzehn"},{num:18, str:"achtzehn"},{num:19, str:"nuenzehn"},{num:20, str:"zwanzig"},{num:30, str:"dreißig"},{num:40, str:"vierzig"},{num:50, str:"fünfzig"},{num:60, str:"sechzig"},{num:70, str:"siebzig"},{num:80, str:"achtzig"},{num:90, str:"neunzig"},{num:100, str:"hundert"},{num:1000, str:"tausend"}];
-let hundredspos: number = 28;
-let thousandspos: number = 29;
+const multiply1: string = "mal";
+const multiply2: string = "multipliziert"
+const multiply: string[] = [multiply1,multiply2]
+const subtract1: string = "weniger"
+const subtract2: string = "minus"
+const subtract: string[] = [subtract1,subtract2]
+const add1: string = "und"
+const add2: string = "plus"
+const add: string[] = [add1,add2]
+const divide: string = "geteilt durch";
+var res: Data = {str: "",num:0};
+const negative: string = "negativ";
+const and: string = "und";
+const fail: Data = {num:0, str:"bad"};
+const strings: string[] = ["null","ein","zwei","drei","vier","fünf","sechs","sieben","acht","nuen","zehn","elf","zwölf","dreizehn","vierzehn","fünfzehn","sechzehn","siebzehn","achtzehn","nuenzehn","zwanzig","dreißig","vierzig","fünfzig","sechzig","siebzig","achtzig","neunzig","hundert","tausend"]
+const numerals: number[] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,30,40,50,60,70,80,90,100,1000];
+const hundredspos: number = 28;
+const thousandspos: number = 29;
 
 function getOperand() {
     const operands: string[] = ["•","+","-","/"];
@@ -34,29 +30,39 @@ function getOperand() {
 }
 
 function HandleTens(input: number) {
-    let retVal: Data = {str: "", num: input}
+    console.log("Tens:" + input)
+    var retVal: Data = {str: "", num: input}
+    var i:number = 0;
     if(input < 20) {
         //Handle directly
-        for (var i = 0; i < numbers.length; i++)
+        for (i = 0; i < 20; i++)
         {
-            if (input == numbers[i].num)
+            console.log(input + "<-input numbers.num->" + numerals[i] + "i:" + i);
+            if (input == numerals[i])
             {
-                return numbers[i];
+                console.log("numbers " + i + " str: " + strings[i] );
+                var retDat:Data = {str: strings[i], num: numerals[i]};
+                //return numbers[i];
+                return retDat;
             }   
         }
     } else if (input < 100) { 
-        let tens: number = Math.floor(input / 10) * 10
-        let ones: number = Math.floor(input % 10)
-        for(var i = 0; i < 10; i++)
+        var tens: number = Math.floor(input / 10) * 10
+        var ones: number = Math.floor(input % 10)
+        for(i = 0; i < 10; i++)
         {
-            if(numbers[i].num == ones) {
-                retVal.str = numbers[i].str
+            if(numerals[i] == ones && ones != 0) {
+                retVal.str = strings[i]
             }
         }
-        for (var i = 19; i < numbers.length; i++)
+        for (i = 19; i < numerals.length; i++)
         {
-            if(numbers[i].num == tens) {
-                retVal.str += and + numbers[i].str;
+            if(numerals[i] == tens) {
+                if (ones == 0) {
+                    retVal.str += strings[i];
+                } else {
+                    retVal.str += and + strings[i];
+                }
             }
         }
     } else {
@@ -67,17 +73,20 @@ function HandleTens(input: number) {
 }
 
 function HandleHundreds(input: number) {
-    let retVal: Data = {str: "", num: input}
+    var retVal: Data = {str: "", num: input}
+    var i:number = 0;
     if(input < 1000) {
-        let hundreds: number = Math.floor(input / 100);
-        for(var i = 0; i < 10; i++)
+        var hundreds: number = Math.floor(input / 100);
+        for(i = 0; i < 10; i++)
         {
-            if(numbers[i].num == hundreds) {
-                retVal.str = numbers[i].str + numbers[hundredspos].str + " ";
+            if(numerals[i] == hundreds) {
+                retVal.str = strings[i] + strings[hundredspos] + " ";
             }
         }
-        let tens: number = input-hundreds*100;
-        retVal.str += HandleTens(tens).str;
+        var tens: number = input-hundreds*100;
+        if(tens != 0) {
+            retVal.str += HandleTens(tens).str;
+        }
     } else {
         //Error condition
         return fail;
@@ -86,63 +95,74 @@ function HandleHundreds(input: number) {
 }
 
 function HandleThousands(input: number) {
-    let retVal: Data = {str: "", num: input}
-    let thousands: number = Math.floor(input / 1000);
+    var retVal: Data = {str: "", num: input}
+    var thousands: number = Math.floor(input / 1000);
     if (input < 100000) {
-        retVal.str = HandleTens(thousands).str + numbers[thousandspos].str + " ";
+        retVal.str = HandleTens(thousands).str + strings[thousandspos] + " ";
     } else {
         //Error
         return fail;
     }
-    let hundreds: number = input-thousands*1000;
-    retVal.str += HandleHundreds(hundreds).str;
+    var hundreds: number = input-thousands*1000;
+    if (hundreds != 0) {
+        retVal.str += HandleHundreds(hundreds).str;
+    }
     return retVal;
 }
 
 
 function HandleNumber(input: number) {
-    let isNegative: boolean = false;
-    let retVal: Data = {str: "", num: input}
+    var isNegative: boolean = false;
+    var retVal: Data = {str: "invalid", num: input};
     if (input < 0) {
         isNegative = true;
-        input = Math.abs(input)
+        input = Math.abs(input);
     }
         
     if(input < 100) {
         retVal = HandleTens(input);
     } else if (input < 1000) {
-        retVal = HandleHundreds(input)
+        retVal = HandleHundreds(input);
     } else {
-        retVal = HandleThousands(input)
+        retVal = HandleThousands(input);
     }
-    if (isNegative) {
-        console.log(input)
+    if (isNegative == true) {
         retVal.str = negative + " " + retVal.str;
     }
-    return retVal
+    console.log("number:" + input + " txt:" + retVal.str);
+    return retVal;
 }
 
 function performMath(num1:number,num2:number,operand:string) {
-    let numericResult: number = 0;
+    var numericResult: number = 0;
     if (operand == "•") {
         numericResult = num1 * num2;
+        console.log(num1 + "•" + num2)
     } else if (operand == "+") {
         numericResult = num1 + num2;
+        console.log(num1 + "+" + num2)
     } else if (operand == "-") {
         numericResult = num1 - num2;
+        console.log(num1 + "-" + num2)
     } else {
         //Assumes division
-        numericResult = Math.floor(num1 / num2);
+        if(num2 == 0) {
+            numericResult = 0;
+        } else {
+            numericResult = Math.floor(num1 / num2);
+            console.log(num1 + "/" + num2)
+        }
     }
+    console.log("Handling:" + numericResult);
     return HandleNumber(numericResult);
 }
 
 function genNumber() {
-    const checkbox_easy = document.getElementById('easy') as HTMLInputElement | null;
-    const checkbox_medium = document.getElementById('med') as HTMLInputElement | null;
-    const checkbox_hard = document.getElementById('hard') as HTMLInputElement | null;
+    var checkbox_easy = document.getElementById('easy') as HTMLInputElement | null;
+    var checkbox_medium = document.getElementById('med') as HTMLInputElement | null;
+    var checkbox_hard = document.getElementById('hard') as HTMLInputElement | null;
 
-    let multiplier: number = 0;
+    var multiplier: number = 0;
     if (checkbox_easy?.checked) {
         multiplier = 15;
     } else if (checkbox_medium?.checked) {
@@ -150,11 +170,11 @@ function genNumber() {
     } else {
         multiplier = 200;
     }
-    return Math.floor(Math.random() * multiplier);
+    return Math.abs(Math.floor(Math.random() * multiplier));
 }
 
 function getOperandString(operand: String) {
-    let rnd:number = Math.random() > 0.49 ? 1 : 0;
+    var rnd:number = Math.random() > 0.49 ? 1 : 0;
     if (operand == "•") {
         return multiply[rnd];
     } else if (operand == "+") {
@@ -168,15 +188,15 @@ function getOperandString(operand: String) {
 }
 
 function setText(num1:number,num2:number,operand:string) {
-    let genbox = document.getElementById("generatedstring") as HTMLElement | null;
+    var genbox = document.getElementById("generatedstring") as HTMLElement | null;
     if( genbox != null) {
         genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
     }
 }
 
 export function checkMath(e:Event) {
-    let genbox = document.getElementById("generatedstring") as HTMLElement | null;
-    let enterbox = document.getElementById("guess") as HTMLInputElement | null;
+    var genbox = document.getElementById("generatedstring") as HTMLElement | null;
+    var enterbox = document.getElementById("guess") as HTMLInputElement | null;
     if (enterbox != null) {
         if (enterbox.value != res.str) {
             if(genbox != null) {
@@ -191,12 +211,14 @@ export function checkMath(e:Event) {
 }
 
 export function generateMath(e:Event) {
-    operand = getOperand();
-    firstOp = genNumber();
-    secondOp = genNumber();
-    res = performMath(firstOp,secondOp,operand);
+    var operand = getOperand();
+    var firstOp = genNumber();
+    var secondOp = genNumber();
+    res.str = "";
+    res.num = 0;
     setText(firstOp,secondOp,operand);
-    let enterbox = document.getElementById("guess") as HTMLInputElement | null;
+    res = performMath(firstOp,secondOp,operand);
+    var enterbox = document.getElementById("guess") as HTMLInputElement | null;
     if (enterbox != null) {
         enterbox.value = "";
     }
