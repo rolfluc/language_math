@@ -3,7 +3,6 @@ interface Data {
     num: number;
 }
 
-
 const multiply1: string = "mal";
 const multiply2: string = "multipliziert"
 const multiply: string[] = [multiply1,multiply2]
@@ -190,6 +189,9 @@ function getOperandString(operand: String) {
 function setText(num1:number,num2:number,operand:string) {
     var genbox = document.getElementById("generatedstring") as HTMLElement | null;
     if( genbox != null) {
+        genbox.style.animation = 'none';
+        genbox.offsetHeight;
+        //genbox.style.animation = "fadeInOpacity"; 
         genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
     }
 }

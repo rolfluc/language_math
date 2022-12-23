@@ -186,6 +186,9 @@ function getOperandString(operand) {
 function setText(num1, num2, operand) {
     var genbox = document.getElementById("generatedstring");
     if (genbox != null) {
+        genbox.style.animation = 'none';
+        genbox.offsetHeight;
+        //genbox.style.animation = "fadeInOpacity"; 
         genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
     }
 }
