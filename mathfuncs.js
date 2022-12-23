@@ -19,21 +19,43 @@ var strings = ["null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben"
 var numerals = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000];
 var hundredspos = 28;
 var thousandspos = 29;
+var nos = ["Überhaupt nicht", "Auf gar keinen Fall", "Absolut nicht", "Nein", "Nö"];
+var operands = ["•", "+", "-", "/"];
+var difficulties = ["Einfach", "Mittel", "Schwer"];
 function getOperand() {
-    var operands = ["•", "+", "-", "/"];
     var index = Math.floor(Math.random() * operands.length);
     return operands[index];
 }
+function getNo() {
+    var index = Math.floor(Math.random() * nos.length);
+    return nos[index];
+}
+function populateDifficulties() {
+    var easylabel = document.getElementById("easylabel");
+    var medlabel = document.getElementById("medlabel");
+    var hardlabel = document.getElementById("hardlabel");
+    if (easylabel != null) {
+        easylabel.textContent = difficulties[0];
+    }
+    if (medlabel != null) {
+        medlabel.textContent = difficulties[1];
+    }
+    if (hardlabel != null) {
+        hardlabel.textContent = difficulties[2];
+    }
+}
+document.body.onload = function (event) {
+    //if(document.readyState === "complete") {
+    populateDifficulties();
+    //}
+};
 function HandleTens(input) {
-    console.log("Tens:" + input);
     var retVal = { str: "", num: input };
     var i = 0;
     if (input < 20) {
         //Handle directly
         for (i = 0; i < 20; i++) {
-            console.log(input + "<-input numbers.num->" + numerals[i] + "i:" + i);
             if (input == numerals[i]) {
-                console.log("numbers " + i + " str: " + strings[i]);
                 var retDat = { str: strings[i], num: numerals[i] };
                 //return numbers[i];
                 return retDat;
@@ -121,7 +143,6 @@ function HandleNumber(input) {
     if (isNegative == true) {
         retVal.str = negative + " " + retVal.str;
     }
-    console.log("number:" + input + " txt:" + retVal.str);
     return retVal;
 }
 function performMath(num1, num2, operand) {
@@ -198,12 +219,13 @@ function checkMath(e) {
     if (enterbox != null) {
         if (enterbox.value != res.str) {
             if (genbox != null) {
-                genbox.innerHTML += " " + res.str;
+                genbox.innerHTML = getNo();
+                //genbox.innerHTML += " " + res.str;
             }
         }
         else {
             if (genbox != null) {
-                genbox.innerHTML = "Schon gut";
+                genbox.innerHTML = "Stimmt";
             }
         }
     }

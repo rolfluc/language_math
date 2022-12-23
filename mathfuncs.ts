@@ -21,25 +21,48 @@ const strings: string[] = ["null","ein","zwei","drei","vier","fünf","sechs","si
 const numerals: number[] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,30,40,50,60,70,80,90,100,1000];
 const hundredspos: number = 28;
 const thousandspos: number = 29;
+const nos: string[] = ["Überhaupt nicht","Auf gar keinen Fall","Absolut nicht","Nein","Nö"]
+const operands: string[] = ["•","+","-","/"];
+const difficulties: string [] = ["Einfach","Mittel","Schwer"]
 
 function getOperand() {
-    const operands: string[] = ["•","+","-","/"];
     var index = Math.floor(Math.random() * operands.length);
     return operands[index];
 }
+function getNo() {
+    var index = Math.floor(Math.random() * nos.length);
+    return nos[index];
+}
+function populateDifficulties() {
+    var easylabel = document.getElementById("easylabel") as HTMLElement | null;
+    var medlabel = document.getElementById("medlabel") as HTMLElement | null;
+    var hardlabel = document.getElementById("hardlabel") as HTMLElement | null;
+    if(easylabel != null) {
+        easylabel.textContent = difficulties[0];
+    }
+    if(medlabel != null) {
+        medlabel.textContent = difficulties[1];
+    }
+    if(hardlabel != null) {
+        hardlabel.textContent = difficulties[2];
+    }
+}
+
+document.body.onload = (event) => {
+    //if(document.readyState === "complete") {
+        populateDifficulties()
+    //}
+}
 
 function HandleTens(input: number) {
-    console.log("Tens:" + input)
     var retVal: Data = {str: "", num: input}
     var i:number = 0;
     if(input < 20) {
         //Handle directly
         for (i = 0; i < 20; i++)
         {
-            console.log(input + "<-input numbers.num->" + numerals[i] + "i:" + i);
             if (input == numerals[i])
             {
-                console.log("numbers " + i + " str: " + strings[i] );
                 var retDat:Data = {str: strings[i], num: numerals[i]};
                 //return numbers[i];
                 return retDat;
@@ -128,7 +151,6 @@ function HandleNumber(input: number) {
     if (isNegative == true) {
         retVal.str = negative + " " + retVal.str;
     }
-    console.log("number:" + input + " txt:" + retVal.str);
     return retVal;
 }
 
@@ -202,11 +224,13 @@ export function checkMath(e:Event) {
     if (enterbox != null) {
         if (enterbox.value != res.str) {
             if(genbox != null) {
-                genbox.innerHTML += " " + res.str;
+                genbox.innerHTML = getNo();
+                console.log(res.str)
+                //genbox.innerHTML += " " + res.str;
             }
         } else {
             if(genbox != null) {
-                genbox.innerHTML = "Schon gut";
+                genbox.innerHTML = "Stimmt";
             }
         }
     }

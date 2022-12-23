@@ -7,17 +7,22 @@
         <tr>
             <td colspan="2">
                 <div id="generatedstring" class="mathclass"></div>
+                <div class="flag">
+                    <span class="black stripe"></span>
+                    <span class="red stripe"></span>
+                    <span class="gold stripe"></span>
+                </div>
             </td>
         </tr>
         <tr>
             <td class="radios">
                 <div id="complexity" class="complexity">
                     <input type="radio" id="easy" name="diff" value="easy" checked>
-                    <label for="easy">Easy</label><br>
+                    <label id="easylabel" for="easy">Easy</label><br>
                     <input type="radio" id="med" name="diff" value="med">
-                    <label for="med">Medium</label><br>
+                    <label id="medlabel" for="med">Medium</label><br>
                     <input type="radio" id="hard" name="diff" value="hard">
-                    <label for="hard">Hard</label>
+                    <label id="hardlabel" for="hard">Hard</label>
                 </div>
             </td>
             <td>
@@ -29,11 +34,4 @@
             </td>
         </tr>
     </table>
-    <!--
-    <div class="flag">
-        <span class="black stripe"></span>
-        <span class="red stripe"></span>
-        <span class="gold stripe"></span>
-    </div>
-    -->
 </body>
