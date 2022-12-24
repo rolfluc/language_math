@@ -48,11 +48,23 @@ function populateDifficulties() {
     }
 }
 
-document.body.onload = (event) => {
-    //if(document.readyState === "complete") {
-        populateDifficulties()
-    //}
+function handleDoneShaking() {
+    var enterbox = document.getElementById("guess") as HTMLInputElement | null;
+    if (enterbox != null) {
+        enterbox.style.animation = "";
+    }
 }
+
+document.body.onload = (event) => {
+    populateDifficulties()
+    var enterbox = document.getElementById("guess") as HTMLInputElement | null;
+    if (enterbox != null) {
+        enterbox.addEventListener("webkitAnimationEnd", handleDoneShaking,false);
+        enterbox.addEventListener("animationend", handleDoneShaking,false);
+        enterbox.addEventListener("oanimationend", handleDoneShaking,false);
+    }
+}
+
 
 function HandleTens(input: number) {
     var retVal: Data = {str: "", num: input}
@@ -226,7 +238,8 @@ export function checkMath(e:Event) {
             if(genbox != null) {
                 genbox.innerHTML = getNo();
                 console.log(res.str)
-                //genbox.innerHTML += " " + res.str;
+                enterbox.style.animation = "";
+                enterbox.style.animation = "shake 0.6s";
             }
         } else {
             if(genbox != null) {

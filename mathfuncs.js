@@ -44,10 +44,20 @@ function populateDifficulties() {
         hardlabel.textContent = difficulties[2];
     }
 }
+function handleDoneShaking() {
+    var enterbox = document.getElementById("guess");
+    if (enterbox != null) {
+        enterbox.style.animation = "";
+    }
+}
 document.body.onload = function (event) {
-    //if(document.readyState === "complete") {
     populateDifficulties();
-    //}
+    var enterbox = document.getElementById("guess");
+    if (enterbox != null) {
+        enterbox.addEventListener("webkitAnimationEnd", handleDoneShaking, false);
+        enterbox.addEventListener("animationend", handleDoneShaking, false);
+        enterbox.addEventListener("oanimationend", handleDoneShaking, false);
+    }
 };
 function HandleTens(input) {
     var retVal = { str: "", num: input };
@@ -220,7 +230,9 @@ function checkMath(e) {
         if (enterbox.value != res.str) {
             if (genbox != null) {
                 genbox.innerHTML = getNo();
-                //genbox.innerHTML += " " + res.str;
+                console.log(res.str);
+                enterbox.style.animation = "";
+                enterbox.style.animation = "shake 0.6s";
             }
         }
         else {
