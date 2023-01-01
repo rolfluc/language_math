@@ -227,7 +227,9 @@ function checkMath(e) {
     var genbox = document.getElementById("generatedstring");
     var enterbox = document.getElementById("guess");
     if (enterbox != null) {
-        if (enterbox.value != res.str) {
+        var enterboxval = enterbox.value.toLowerCase();
+        var resstr = res.str.toLowerCase();
+        if (enterboxval != resstr) {
             if (genbox != null) {
                 genbox.innerHTML = getNo();
                 console.log(res.str);
