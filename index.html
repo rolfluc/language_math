@@ -3,35 +3,40 @@
 <link rel="stylesheet" href="style.css">
 <body>
     <script src="mathfuncs.js"></script>
-    <table >
-        <tr>
-            <td colspan="2">
-                <div id="generatedstring" class="mathclass">Willkommen</div>
-                <div class="flag">
-                    <span class="black stripe"></span>
-                    <span class="red stripe"></span>
-                    <span class="gold stripe"></span>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="radios">
-                <div id="complexity" class="complexity">
-                    <input type="radio" id="easy" name="diff" value="easy" checked>
-                    <label id="easylabel" for="easy">Easy</label><br>
-                    <input type="radio" id="med" name="diff" value="med">
-                    <label id="medlabel" for="med">Medium</label><br>
-                    <input type="radio" id="hard" name="diff" value="hard">
-                    <label id="hardlabel" for="hard">Hard</label>
-                </div>
-            </td>
-            <td>
-                <div class="entry">
-                    <input type="text" id="guess" class="input_box" />
-                    <button id="Generate" onclick="generateMath()">Generate</button>
-                    <button id="Check" onclick="checkMath()">Check</button>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div class="flag">
+        <span class="black stripe"></span>
+        <span class="red stripe"></span>
+        <span class="gold stripe"></span>
+    </div>
+    <div id="generatedstring" class="mathclass">Willkommen</div>
+    <div class="entry">
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <input type="radio" id="easy" name="diff" value="easy" checked>
+                        <label id="easylabel" for="easy">Easy</label><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" id="med" name="diff" value="med">
+                        <label id="medlabel" for="med">Medium</label><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" id="hard" name="diff" value="hard">
+                        <label id="hardlabel" for="hard">Hard</label>
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+        <div>
+            <input type="text" id="guess" class="input_box" />
+            <button id="Generate" onclick="generateMath()">Erzeugen</button>
+            <button id="Check" onclick="checkMath()">Validieren</button>
+        </div>
+    </div>
 </body>

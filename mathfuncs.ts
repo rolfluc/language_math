@@ -225,7 +225,6 @@ function setText(num1:number,num2:number,operand:string) {
     if( genbox != null) {
         genbox.style.animation = 'none';
         genbox.offsetHeight;
-        //genbox.style.animation = "fadeInOpacity"; 
         genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
     }
 }

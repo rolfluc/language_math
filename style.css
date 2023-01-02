@@ -2,11 +2,7 @@ body {
     background-color: darkgrey;
     font-family: 'Ubuntu';
     text-align: center;
-}
-
-table {
-  margin-left: 25%;
-  margin-top: 15%;
+    height: 100%;
 }
 
 .mathclass {
@@ -15,19 +11,26 @@ table {
     font-size: 30px;
     opacity: 1;
     color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    top: 40%;
 }
-.complexity {
-    min-width: 25%;
-}
+
 .entry {
-    min-width: 25%;
-}
-.radios {
-    min-width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    top: 40%;
 }
 
 .input_running {
-  text-align: center;
+    text-align: center;
     margin: auto;
     min-width: 25%;
     font-family: 'Ubuntu';
@@ -39,20 +42,21 @@ table {
 .input_box {
     text-align: center;
     margin: auto;
-    min-width: 25%;
+    width: 50%;
     font-family: 'Ubuntu';
     font-size: 30px;
     background-color: darkgrey;
     border-color: aqua;
 }
 
-h1 {text-align: center; font-family: 'Ubuntu', sans-serif; color: #D0D3D4;}
 .flag {
-  margin: auto;
   height: 25px;
   width: 50px;
   overflow: hidden;
   border-radius: 5px;
+  justify-content: top;
+  align-items: left;
+  position: relative;
 }
 .stripe {
   display: block;
