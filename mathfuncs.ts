@@ -13,7 +13,6 @@ const add1: string = "und"
 const add2: string = "plus"
 const add: string[] = [add1,add2]
 const divide: string = "geteilt durch";
-var res: Data = {str: "",num:0};
 const negative: string = "negativ";
 const and: string = "und";
 const fail: Data = {num:0, str:"bad"};
@@ -24,6 +23,10 @@ const thousandspos: number = 29;
 const nos: string[] = ["Überhaupt nicht","Auf gar keinen Fall","Absolut nicht","Nein","Nö"]
 const operands: string[] = ["•","+","-","/"];
 const difficulties: string [] = ["Einfach","Mittel","Schwer"]
+
+
+var res: Data = {str: "",num:0};
+let timeoutGenerate: ReturnType<typeof setTimeout>  = setTimeout(()=> {},2900);
 
 function getOperand() {
     var index = Math.floor(Math.random() * operands.length);
@@ -229,33 +232,55 @@ function setText(num1:number,num2:number,operand:string) {
     }
 }
 
+function HideBox(box :HTMLElement) {
+    box.style.visibility = "hidden";
+    box.style.animation = "";
+    generateMath();
+}
+
 export function checkMath(e:Event) {
-    var genbox = document.getElementById("generatedstring") as HTMLElement | null;
+    var genbox = document.getElementById("response") as HTMLElement | null;
     var enterbox = document.getElementById("guess") as HTMLInputElement | null;
     if (enterbox != null) {
         var enterboxval = enterbox.value.toLowerCase();
         var resstr = res.str.toLowerCase();
         if (enterboxval != resstr) {
             if(genbox != null) {
-                genbox.innerHTML = getNo();
-                console.log(res.str)
+                genbox.style.visibility = "visible";
+                genbox.style.color = "#ff0000";
+                genbox.style.animation = "";
+                genbox.style.animation = "fadeout 3s";
+                timeoutGenerate = setTimeout(HideBox,2900,genbox);
+                genbox.innerHTML = getNo() + "&nbsp:&nbsp" + res.str;
                 enterbox.style.animation = "";
                 enterbox.style.animation = "shake 0.6s";
+
             }
         } else {
             if(genbox != null) {
+                genbox.style.visibility = "visible";
+                genbox.style.color = "#ffff00";
+                genbox.style.animation = "";
+                genbox.style.animation = "fadeout 3s";
+                timeoutGenerate = setTimeout(HideBox,2900,genbox);
                 genbox.innerHTML = "Stimmt";
             }
         }
     }
 }
 
-export function generateMath(e:Event) {
+export function generateMath() {
     var operand = getOperand();
     var firstOp = genNumber();
     var secondOp = genNumber();
     res.str = "";
     res.num = 0;
+    clearTimeout(timeoutGenerate);
+    var genbox = document.getElementById("response") as HTMLInputElement | null;
+    if (genbox != null) {
+        genbox.style.visibility = "hidden";
+        genbox.style.animation = "";
+    }
     setText(firstOp,secondOp,operand);
     res = performMath(firstOp,secondOp,operand);
     var enterbox = document.getElementById("guess") as HTMLInputElement | null;

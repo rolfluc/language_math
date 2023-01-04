@@ -10,13 +10,30 @@ body {
     font-family: 'Ubuntu';
     font-size: 30px;
     opacity: 1;
-    color: brown;
+    color: black;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     margin: auto;
     top: 40%;
+}
+
+.respstart {
+  text-align: center;
+  font-family: 'Ubuntu';
+  font-size: 30px;
+  opacity: 1;
+  color: yellow;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  visibility: hidden;
+  top: 40%;
 }
 
 .entry {
@@ -34,9 +51,8 @@ body {
     margin: auto;
     min-width: 25%;
     font-family: 'Ubuntu';
-    font-size: 30px;
-    background-color: darkgrey;
-    border-color: aqua;
+    font-size: 24px;
+    background-color: grey;
 }
 
 .input_box {
@@ -44,9 +60,9 @@ body {
     margin: auto;
     width: 50%;
     font-family: 'Ubuntu';
-    font-size: 30px;
-    background-color: darkgrey;
-    border-color: aqua;
+    font-size: 24px;
+    background-color: white;
+    border-color: black;
 }
 
 .flag {
@@ -93,4 +109,14 @@ body {
   100% {
       transform: skewX(0deg);
   }
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-webkit-keyframes fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
