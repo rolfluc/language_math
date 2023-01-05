@@ -24,7 +24,15 @@ var difficulties = ["Einfach", "Mittel", "Schwer"];
 var res = { str: "", num: 0 };
 var timeoutGenerate = setTimeout(function () { }, 2900);
 function getOperand() {
-    var index = Math.floor(Math.random() * operands.length);
+    var checkbox_easy = document.getElementById('easy');
+    //If medium or hard are checked (thereby, not easy), only look at multiplication, addition, and subtraction
+    var index = 0;
+    if (!(checkbox_easy === null || checkbox_easy === void 0 ? void 0 : checkbox_easy.checked)) {
+        index = Math.floor(Math.random() * operands.length);
+    }
+    else {
+        index = index = Math.floor(Math.random() * (operands.length - 1));
+    }
     return operands[index];
 }
 function getNo() {
