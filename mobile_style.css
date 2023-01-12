@@ -1,0 +1,122 @@
+body {
+    background-color: darkgrey;
+    font-family: 'Ubuntu';
+    text-align: center;
+    height: 100%;
+}
+
+.mathclass {
+    text-align: center;
+    font-family: 'Ubuntu';
+    font-size: 30px;
+    opacity: 1;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    top: 40%;
+}
+
+.respstart {
+  text-align: center;
+  font-family: 'Ubuntu';
+  font-size: 30px;
+  opacity: 1;
+  color: yellow;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  visibility: hidden;
+  top: 40%;
+}
+
+.entry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    top: 40%;
+}
+
+.input_running {
+    text-align: center;
+    margin: auto;
+    min-width: 25%;
+    font-family: 'Ubuntu';
+    font-size: 24px;
+    background-color: grey;
+}
+
+.input_box {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    font-family: 'Ubuntu';
+    font-size: 24px;
+    background-color: white;
+    border-color: black;
+}
+
+.flag {
+  height: 25px;
+  width: 50px;
+  overflow: hidden;
+  border-radius: 5px;
+  justify-content: top;
+  align-items: left;
+  position: relative;
+}
+.stripe {
+  display: block;
+  width: 100%;
+  height: 33.3%;
+}
+.black {
+  background-color: #000000;
+}
+.red {
+  background-color: #FF0000;
+}
+.gold{
+  background-color: #FFCC00;
+}
+
+@keyframes shake {
+  0% {
+      transform: skewX(-10deg);
+  }
+
+  25% {
+      transform: skewX(10deg);
+  }
+
+  50% {
+      transform: skewX(-10deg);
+  }
+
+  75% {
+      transform: skewX(10deg);
+  }
+
+  100% {
+      transform: skewX(0deg);
+  }
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-webkit-keyframes fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

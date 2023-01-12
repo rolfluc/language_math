@@ -23,6 +23,37 @@ var operands = ["•", "+", "-", "/"];
 var difficulties = ["Einfach", "Mittel", "Schwer"];
 var res = { str: "", num: 0 };
 var timeoutGenerate = setTimeout(function () { }, 2900);
+function isMobile() {
+    var agentIDs = ["Android", "webOS", "iPhone", "iPad", "iPod", "BlackBerry", "IEMobile", "Opera Mini"];
+    var agent = navigator.userAgent;
+    var i = 0;
+    for (i = 0; i < agentIDs.length; i++) {
+        if (agentIDs[i] == agent) {
+            return true;
+        }
+    }
+    return false;
+}
+document.body.onload = function (event) {
+    var mobilePath = "mobile_style.css";
+    var desktopPath = "style.css";
+    var css = document.getElementById("csslink");
+    if (css != null) {
+        if (isMobile()) {
+            css.setAttribute("href", mobilePath);
+        }
+        else {
+            css.setAttribute("href", desktopPath);
+        }
+    }
+    populateDifficulties();
+    var enterbox = document.getElementById("guess");
+    if (enterbox != null) {
+        enterbox.addEventListener("webkitAnimationEnd", handleDoneShaking, false);
+        enterbox.addEventListener("animationend", handleDoneShaking, false);
+        enterbox.addEventListener("oanimationend", handleDoneShaking, false);
+    }
+};
 function getOperand() {
     var checkbox_easy = document.getElementById('easy');
     //If medium or hard are checked (thereby, not easy), only look at multiplication, addition, and subtraction
@@ -59,15 +90,6 @@ function handleDoneShaking() {
         enterbox.style.animation = "";
     }
 }
-document.body.onload = function (event) {
-    populateDifficulties();
-    var enterbox = document.getElementById("guess");
-    if (enterbox != null) {
-        enterbox.addEventListener("webkitAnimationEnd", handleDoneShaking, false);
-        enterbox.addEventListener("animationend", handleDoneShaking, false);
-        enterbox.addEventListener("oanimationend", handleDoneShaking, false);
-    }
-};
 function HandleTens(input) {
     var retVal = { str: "", num: input };
     var i = 0;

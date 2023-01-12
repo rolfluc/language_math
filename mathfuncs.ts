@@ -28,6 +28,41 @@ const difficulties: string [] = ["Einfach","Mittel","Schwer"]
 var res: Data = {str: "",num:0};
 let timeoutGenerate: ReturnType<typeof setTimeout>  = setTimeout(()=> {},2900);
 
+function isMobile() {
+    const agentIDs: string[] = ["Android","webOS","iPhone","iPad","iPod","BlackBerry","IEMobile","Opera Mini"];
+    const agent = navigator.userAgent;
+    var i:number = 0;
+    for (i = 0; i < agentIDs.length; i++)
+    {
+        if (agentIDs[i] == agent)
+        {
+            return true;
+        }   
+    }
+    return false;
+}
+
+document.body.onload = (event) => {
+    const mobilePath: string = "mobile_style.css";
+    const desktopPath: string = "style.css";
+    var css = document.getElementById("csslink") as HTMLElement | null;
+    if(css != null) {
+        if(isMobile()) {
+            css.setAttribute("href",mobilePath);
+        } else {
+            css.setAttribute("href",desktopPath);
+        }
+    }
+
+    populateDifficulties()
+    var enterbox = document.getElementById("guess") as HTMLInputElement | null;
+    if (enterbox != null) {
+        enterbox.addEventListener("webkitAnimationEnd", handleDoneShaking,false);
+        enterbox.addEventListener("animationend", handleDoneShaking,false);
+        enterbox.addEventListener("oanimationend", handleDoneShaking,false);
+    }
+}
+
 function getOperand() {
     var checkbox_easy = document.getElementById('easy') as HTMLInputElement | null;
     //If medium or hard are checked (thereby, not easy), only look at multiplication, addition, and subtraction
@@ -64,17 +99,6 @@ function handleDoneShaking() {
         enterbox.style.animation = "";
     }
 }
-
-document.body.onload = (event) => {
-    populateDifficulties()
-    var enterbox = document.getElementById("guess") as HTMLInputElement | null;
-    if (enterbox != null) {
-        enterbox.addEventListener("webkitAnimationEnd", handleDoneShaking,false);
-        enterbox.addEventListener("animationend", handleDoneShaking,false);
-        enterbox.addEventListener("oanimationend", handleDoneShaking,false);
-    }
-}
-
 
 function HandleTens(input: number) {
     var retVal: Data = {str: "", num: input}
