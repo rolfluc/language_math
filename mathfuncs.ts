@@ -47,7 +47,7 @@ document.body.onload = (event) => {
     const desktopPath: string = "style.css";
     var css = document.getElementById("csslink") as HTMLElement | null;
     if(css != null) {
-        if(isMobile()) {
+        if(!isMobile()) {
             css.setAttribute("href",mobilePath);
         } else {
             css.setAttribute("href",desktopPath);
