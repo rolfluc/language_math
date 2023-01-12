@@ -64,6 +64,10 @@ body {
     background-color: white;
     border-color: black;
 }
+.buttons {
+    font-family: 'Ubuntu';
+    font-size: 30px;
+}
 
 .flag {
   height: 25px;

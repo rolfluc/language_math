@@ -219,15 +219,15 @@ function genNumber() {
     var checkbox_hard = document.getElementById('hard');
     var multiplier = 0;
     if (checkbox_easy === null || checkbox_easy === void 0 ? void 0 : checkbox_easy.checked) {
-        multiplier = 15;
+        multiplier = 12 - 1;
     }
     else if (checkbox_medium === null || checkbox_medium === void 0 ? void 0 : checkbox_medium.checked) {
-        multiplier = 50;
+        multiplier = 50 - 1;
     }
     else {
-        multiplier = 200;
+        multiplier = 200 - 1;
     }
-    return Math.abs(Math.floor(Math.random() * multiplier));
+    return Math.abs(Math.floor(Math.random() * multiplier)) + 1;
 }
 function getOperandString(operand) {
     var rnd = Math.random() > 0.49 ? 1 : 0;

@@ -47,7 +47,7 @@ document.body.onload = (event) => {
     const desktopPath: string = "style.css";
     var css = document.getElementById("csslink") as HTMLElement | null;
     if(css != null) {
-        if(!isMobile()) {
+        if(isMobile()) {
             css.setAttribute("href",mobilePath);
         } else {
             css.setAttribute("href",desktopPath);
@@ -231,13 +231,13 @@ function genNumber() {
 
     var multiplier: number = 0;
     if (checkbox_easy?.checked) {
-        multiplier = 15;
+        multiplier = 12 - 1;
     } else if (checkbox_medium?.checked) {
-        multiplier = 50;
+        multiplier = 50 - 1;
     } else {
-        multiplier = 200;
+        multiplier = 200 - 1;
     }
-    return Math.abs(Math.floor(Math.random() * multiplier));
+    return Math.abs(Math.floor(Math.random() * multiplier)) + 1;
 }
 
 function getOperandString(operand: String) {
