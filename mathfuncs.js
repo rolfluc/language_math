@@ -39,7 +39,7 @@ document.body.onload = function (event) {
     var desktopPath = "style.css";
     var css = document.getElementById("csslink");
     if (css != null) {
-        if (!isMobile()) {
+        if (isMobile()) {
             css.setAttribute("href", mobilePath);
         }
         else {

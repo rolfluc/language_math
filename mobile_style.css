@@ -84,13 +84,13 @@ body {
   height: 33.3%;
 }
 .black {
-    background-color: #FFCC00;
+    background-color: #000000;
 }
 .red {
     background-color: #FF0000;
 }
 .gold{
-    background-color: #000000;
+    background-color: #FFCC00;
 }
 
 @keyframes shake {
