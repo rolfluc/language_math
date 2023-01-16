@@ -3,32 +3,34 @@
 <link id="csslink" rel="stylesheet" type="text/css">
 <body>
     <script src="mathfuncs.js"></script>
-    <div class="flag">
-        <span class="black stripe"></span>
-        <span class="red stripe"></span>
-        <span class="gold stripe"></span>
+    <div id="response" class="respstart"></div>
+    <div id="generatedstring" class="mathclass">
+        <div class="flag">
+            <span class="black stripe"></span>
+            <span class="red stripe"></span>
+            <span class="gold stripe"></span>
+        </div>
+        Willkommen
     </div>
-    <div id="response" class="respstart">a</div>
-    <div id="generatedstring" class="mathclass">Willkommen</div>
     <div class="entry">
         <div>
             <table>
                 <tr>
                     <td>
                         <input type="radio" id="easy" name="diff" value="easy" checked>
-                        <label id="easylabel" for="easy">Easy</label><br>
+                        <label id="easylabel" class="easylabel" for="easy">Easy</label><br>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="radio" id="med" name="diff" value="med">
-                        <label id="medlabel" for="med">Medium</label><br>
+                        <label id="medlabel" class="medlabel" for="med">Medium</label><br>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="radio" id="hard" name="diff" value="hard">
-                        <label id="hardlabel" for="hard">Hard</label>
+                        <label id="hardlabel" class="hardlabel" for="hard">Hard</label>
                     </td>
                 </tr>
             </table>

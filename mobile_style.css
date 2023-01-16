@@ -3,9 +3,9 @@ body {
     font-family: 'Ubuntu';
     text-align: center;
     height: 100%;
-}
-
-.mathclass {
+  }
+  
+  .mathclass {
     text-align: center;
     font-family: 'Ubuntu';
     font-size: 36px;
@@ -18,9 +18,24 @@ body {
     position: relative;
     margin: auto;
     top: 40%;
-}
-
-.respstart {
+  }
+  
+  .hardlabel {
+    font-family: 'Ubuntu';
+    font-size: 24px;
+  }
+  
+  .medlabel {
+    font-family: 'Ubuntu';
+    font-size: 24px;
+  }
+  
+  .easylabel {
+    font-family: 'Ubuntu';
+    font-size: 24px;
+  }
+  
+  .respstart {
   text-align: center;
   font-family: 'Ubuntu';
   font-size: 36px;
@@ -34,9 +49,9 @@ body {
   margin: auto;
   visibility: hidden;
   top: 40%;
-}
-
-.entry {
+  }
+  
+  .entry {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,18 +59,18 @@ body {
     text-align: center;
     margin: auto;
     top: 40%;
-}
-
-.input_running {
+  }
+  
+  .input_running {
     text-align: center;
     margin: auto;
     min-width: 25%;
     font-family: 'Ubuntu';
     font-size: 36px;
     background-color: grey;
-}
-
-.input_box {
+  }
+  
+  .input_box {
     text-align: center;
     margin: auto;
     width: 50%;
@@ -63,13 +78,13 @@ body {
     font-size: 36px;
     background-color: white;
     border-color: black;
-}
-.buttons {
+  }
+  .buttons {
     font-family: 'Ubuntu';
     font-size: 30px;
-}
-
-.flag {
+  }
+  
+  .flag {
   height: 25px;
   width: 50px;
   overflow: hidden;
@@ -77,50 +92,50 @@ body {
   justify-content: top;
   align-items: left;
   position: relative;
-}
-.stripe {
+  }
+  .stripe {
   display: block;
   width: 100%;
   height: 33.3%;
-}
-.black {
+  }
+  .black {
     background-color: #000000;
-}
-.red {
+  }
+  .red {
     background-color: #FF0000;
-}
-.gold{
+  }
+  .gold{
     background-color: #FFCC00;
-}
-
-@keyframes shake {
+  }
+  
+  @keyframes shake {
   0% {
       transform: skewX(-10deg);
   }
-
+  
   25% {
       transform: skewX(10deg);
   }
-
+  
   50% {
       transform: skewX(-10deg);
   }
-
+  
   75% {
       transform: skewX(10deg);
   }
-
+  
   100% {
       transform: skewX(0deg);
   }
-}
-
-@keyframes fadeout {
+  }
+  
+  @keyframes fadeout {
   0% { opacity: 1; }
   100% { opacity: 0; }
-}
-
-@-webkit-keyframes fadeout {
+  }
+  
+  @-webkit-keyframes fadeout {
   0% { opacity: 1; }
   100% { opacity: 0; }
-}
+  }
