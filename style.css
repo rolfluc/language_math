@@ -17,6 +17,7 @@ body {
   align-items: center;
   position: relative;
   margin: auto;
+  width: 100%;
   top: 40%;
 }
 
@@ -36,19 +37,19 @@ body {
 }
 
 .respstart {
-text-align: center;
-font-family: 'Ubuntu';
-font-size: 36px;
-opacity: 1;
-color: yellow;
-font-weight: bold;
-display: flex;
-justify-content: center;
-align-items: center;
-position: relative;
-margin: auto;
-visibility: hidden;
-top: 40%;
+  text-align: center;
+  font-family: 'Ubuntu';
+  font-size: 36px;
+  opacity: 1;
+  color: yellow;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  visibility: hidden;
+  top: 40%;
 }
 
 .entry {
@@ -80,11 +81,13 @@ top: 40%;
   border-color: black;
   margin-top: 0.5em;
 }
+
 .buttons {
   font-family: 'Ubuntu';
   font-size: 30px;
   margin-top: 1em;
-  margin-right: 0.75em
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .flag {

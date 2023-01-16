@@ -14,7 +14,7 @@ var divide = "geteilt durch";
 var negative = "negativ";
 var and = "und";
 var fail = { num: 0, str: "bad" };
-var strings = ["null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "nuen", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "nuenzehn", "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig", "hundert", "tausend"];
+var strings = ["null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "nuen", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "nuenzehn", "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "nuenzig", "hundert", "tausend"];
 var numerals = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000];
 var hundredspos = 28;
 var thousandspos = 29;
@@ -281,8 +281,8 @@ function checkMath(e) {
                 genbox.style.visibility = "visible";
                 genbox.style.color = "#ffff00";
                 genbox.style.animation = "";
-                genbox.style.animation = "fadeout 3s";
-                timeoutGenerate = setTimeout(HideBox, 2900, genbox);
+                genbox.style.animation = "fadeout 1s";
+                timeoutGenerate = setTimeout(HideBox, 900, genbox);
                 genbox.innerHTML = "Stimmt";
             }
         }

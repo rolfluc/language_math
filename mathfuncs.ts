@@ -16,7 +16,7 @@ const divide: string = "geteilt durch";
 const negative: string = "negativ";
 const and: string = "und";
 const fail: Data = {num:0, str:"bad"};
-const strings: string[] = ["null","ein","zwei","drei","vier","fünf","sechs","sieben","acht","nuen","zehn","elf","zwölf","dreizehn","vierzehn","fünfzehn","sechzehn","siebzehn","achtzehn","nuenzehn","zwanzig","dreißig","vierzig","fünfzig","sechzig","siebzig","achtzig","neunzig","hundert","tausend"]
+const strings: string[] = ["null","ein","zwei","drei","vier","fünf","sechs","sieben","acht","nuen","zehn","elf","zwölf","dreizehn","vierzehn","fünfzehn","sechzehn","siebzehn","achtzehn","nuenzehn","zwanzig","dreißig","vierzig","fünfzig","sechzig","siebzig","achtzig","nuenzig","hundert","tausend"]
 const numerals: number[] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,30,40,50,60,70,80,90,100,1000];
 const hundredspos: number = 28;
 const thousandspos: number = 29;
@@ -292,8 +292,8 @@ export function checkMath(e:Event) {
                 genbox.style.visibility = "visible";
                 genbox.style.color = "#ffff00";
                 genbox.style.animation = "";
-                genbox.style.animation = "fadeout 3s";
-                timeoutGenerate = setTimeout(HideBox,2900,genbox);
+                genbox.style.animation = "fadeout 1s";
+                timeoutGenerate = setTimeout(HideBox,900,genbox);
                 genbox.innerHTML = "Stimmt";
             }
         }
