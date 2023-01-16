@@ -82,6 +82,7 @@ body {
   .buttons {
     font-family: 'Ubuntu';
     font-size: 30px;
+    padding-top: 30em;
   }
   
   .flag {

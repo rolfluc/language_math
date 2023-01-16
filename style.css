@@ -57,7 +57,7 @@ top: 40%;
   align-items: center;
   position: relative;
   text-align: center;
-  margin: auto;
+  padding-right: 5em;
   top: 40%;
 }
 
@@ -73,15 +73,18 @@ top: 40%;
 .input_box {
   text-align: center;
   margin: auto;
-  width: 50%;
+  width: 85%;
   font-family: 'Ubuntu';
   font-size: 36px;
   background-color: white;
   border-color: black;
+  margin-top: 0.5em;
 }
 .buttons {
   font-family: 'Ubuntu';
   font-size: 30px;
+  margin-top: 1em;
+  margin-right: 0.75em
 }
 
 .flag {
