@@ -54,6 +54,11 @@ document.body.onload = function (event) {
         enterbox.addEventListener("oanimationend", handleDoneShaking, false);
     }
 };
+document.addEventListener("keydown", function (e) {
+    if (e.code == "Enter") {
+        checkMath(e);
+    }
+});
 function getOperand() {
     var checkbox_easy = document.getElementById('easy');
     //If medium or hard are checked (thereby, not easy), only look at multiplication, addition, and subtraction
@@ -253,6 +258,13 @@ function setText(num1, num2, operand) {
         genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
     }
 }
+function FinishedFading(box) {
+    HideBox(box);
+    var enterbox = document.getElementById("guess");
+    if (enterbox != null) {
+        enterbox.focus();
+    }
+}
 function HideBox(box) {
     box.style.visibility = "hidden";
     box.style.animation = "";
@@ -270,7 +282,7 @@ function checkMath(e) {
                 genbox.style.color = "#ff0000";
                 genbox.style.animation = "";
                 genbox.style.animation = "fadeout 3s";
-                timeoutGenerate = setTimeout(HideBox, 2900, genbox);
+                timeoutGenerate = setTimeout(FinishedFading, 2900, genbox);
                 genbox.innerHTML = getNo() + "&nbsp:&nbsp" + res.str;
                 enterbox.style.animation = "";
                 enterbox.style.animation = "shake 0.6s";
@@ -282,7 +294,7 @@ function checkMath(e) {
                 genbox.style.color = "#ffff00";
                 genbox.style.animation = "";
                 genbox.style.animation = "fadeout 1s";
-                timeoutGenerate = setTimeout(HideBox, 900, genbox);
+                timeoutGenerate = setTimeout(FinishedFading, 900, genbox);
                 genbox.innerHTML = "Stimmt";
             }
         }

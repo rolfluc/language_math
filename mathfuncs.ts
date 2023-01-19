@@ -63,6 +63,12 @@ document.body.onload = (event) => {
     }
 }
 
+document.addEventListener("keydown", function (e) {
+    if(e.code == "Enter") {
+        checkMath(e);
+    }
+})
+
 function getOperand() {
     var checkbox_easy = document.getElementById('easy') as HTMLInputElement | null;
     //If medium or hard are checked (thereby, not easy), only look at multiplication, addition, and subtraction
@@ -263,6 +269,14 @@ function setText(num1:number,num2:number,operand:string) {
     }
 }
 
+function FinishedFading(box :HTMLElement) {
+    HideBox(box);
+    var enterbox = document.getElementById("guess") as HTMLInputElement | null;
+    if (enterbox != null) {
+        enterbox.focus();
+    }
+}
+
 function HideBox(box :HTMLElement) {
     box.style.visibility = "hidden";
     box.style.animation = "";
@@ -281,7 +295,7 @@ export function checkMath(e:Event) {
                 genbox.style.color = "#ff0000";
                 genbox.style.animation = "";
                 genbox.style.animation = "fadeout 3s";
-                timeoutGenerate = setTimeout(HideBox,2900,genbox);
+                timeoutGenerate = setTimeout(FinishedFading,2900,genbox);
                 genbox.innerHTML = getNo() + "&nbsp:&nbsp" + res.str;
                 enterbox.style.animation = "";
                 enterbox.style.animation = "shake 0.6s";
@@ -293,7 +307,7 @@ export function checkMath(e:Event) {
                 genbox.style.color = "#ffff00";
                 genbox.style.animation = "";
                 genbox.style.animation = "fadeout 1s";
-                timeoutGenerate = setTimeout(HideBox,900,genbox);
+                timeoutGenerate = setTimeout(FinishedFading,900,genbox);
                 genbox.innerHTML = "Stimmt";
             }
         }
