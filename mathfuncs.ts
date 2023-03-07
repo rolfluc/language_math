@@ -265,7 +265,7 @@ function setText(num1:number,num2:number,operand:string) {
     if( genbox != null) {
         genbox.style.animation = 'none';
         genbox.offsetHeight;
-        genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
+        genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " ist?";
     }
 }
 

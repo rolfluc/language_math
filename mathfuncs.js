@@ -255,7 +255,7 @@ function setText(num1, num2, operand) {
     if (genbox != null) {
         genbox.style.animation = 'none';
         genbox.offsetHeight;
-        genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " sind ?";
+        genbox.innerHTML = HandleNumber(num1).str + " " + getOperandString(operand) + " " + HandleNumber(num2).str + " ist?";
     }
 }
 function FinishedFading(box) {

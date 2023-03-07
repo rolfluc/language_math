@@ -36,6 +36,11 @@ body {
   font-size: 24px;
 }
 
+.easy:hover {
+  background-color: #FF0000;
+  color: red;
+}
+
 .respstart {
   text-align: center;
   font-family: 'Ubuntu';
