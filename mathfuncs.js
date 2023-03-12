@@ -14,7 +14,7 @@ var divide = "geteilt durch";
 var negative = "negativ";
 var and = "und";
 var fail = { num: 0, str: "bad" };
-var strings = ["null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "nuen", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "nuenzehn", "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "nuenzig", "hundert", "tausend"];
+var strings = ["null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig", "hundert", "tausend"];
 var numerals = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000];
 var hundredspos = 28;
 var thousandspos = 29;
@@ -52,6 +52,23 @@ document.body.onload = function (event) {
         enterbox.addEventListener("webkitAnimationEnd", handleDoneShaking, false);
         enterbox.addEventListener("animationend", handleDoneShaking, false);
         enterbox.addEventListener("oanimationend", handleDoneShaking, false);
+    }
+    var genButton = document.getElementById("Generate");
+    if (genButton != null) {
+        genButton.innerText = "Problem";
+    }
+    var checkButton = document.getElementById("Check");
+    if (checkButton != null) {
+        var rnd = Math.floor(Math.random() * 3);
+        if (rnd == 0) {
+            checkButton.innerText = "Lösung";
+        }
+        else if (rnd == 1) {
+            checkButton.innerText = "Ergebnis";
+        }
+        else {
+            checkButton.innerText = "Result";
+        }
     }
 };
 document.addEventListener("keydown", function (e) {
@@ -103,7 +120,6 @@ function HandleTens(input) {
         for (i = 0; i < 20; i++) {
             if (input == numerals[i]) {
                 var retDat = { str: strings[i], num: numerals[i] };
-                //return numbers[i];
                 return retDat;
             }
         }
@@ -140,7 +156,7 @@ function HandleHundreds(input) {
         var hundreds = Math.floor(input / 100);
         for (i = 0; i < 10; i++) {
             if (numerals[i] == hundreds) {
-                retVal.str = strings[i] + strings[hundredspos] + " ";
+                retVal.str = strings[i] + strings[hundredspos];
             }
         }
         var tens = input - hundreds * 100;
@@ -158,7 +174,7 @@ function HandleThousands(input) {
     var retVal = { str: "", num: input };
     var thousands = Math.floor(input / 1000);
     if (input < 100000) {
-        retVal.str = HandleTens(thousands).str + strings[thousandspos] + " ";
+        retVal.str = HandleTens(thousands).str + strings[thousandspos];
     }
     else {
         //Error
@@ -221,7 +237,7 @@ function performMath(num1, num2, operand) {
 function genNumber() {
     var checkbox_easy = document.getElementById('easy');
     var checkbox_medium = document.getElementById('med');
-    var checkbox_hard = document.getElementById('hard');
+    //var checkbox_hard = document.getElementById('hard') as HTMLInputElement | null;
     var multiplier = 0;
     if (checkbox_easy === null || checkbox_easy === void 0 ? void 0 : checkbox_easy.checked) {
         multiplier = 12 - 1;
@@ -293,8 +309,8 @@ function checkMath(e) {
                 genbox.style.visibility = "visible";
                 genbox.style.color = "#ffff00";
                 genbox.style.animation = "";
-                genbox.style.animation = "fadeout 1s";
-                timeoutGenerate = setTimeout(FinishedFading, 900, genbox);
+                genbox.style.animation = "fadeout 2s";
+                timeoutGenerate = setTimeout(FinishedFading, 1900, genbox);
                 genbox.innerHTML = "Stimmt";
             }
         }
